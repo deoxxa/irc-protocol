@@ -1,0 +1,22 @@
+{
+  "name": "irc-protocol",
+  "version": "0.0.0",
+  "description": "Streaming parser and serialiser for IRC protocol data",
+  "main": "index.js",
+  "dependencies": {
+    "steez": "~0.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/deoxxa/irc-protocol.git"
+  },
+  "keywords": [
+    "irc",
+    "protocol",
+    "parser",
+    "serialiser",
+    "stream"
+  ],
+  "author": "Conrad Pankoff <deoxxa@fknsrs.biz> (http://www.fknsrs.biz/)",
+  "license": "BSD"
+}
