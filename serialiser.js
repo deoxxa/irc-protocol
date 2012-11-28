@@ -27,5 +27,5 @@ Serialiser.prototype.format_prefix = function format_prefix(prefix) {
 };
 
 Serialiser.prototype.format_parameters = function format_parameters(parameters) {
-  return parameters.map(function(e) { return ((e.indexOf(" ") !== -1) ? ":" : "") + e; }).join(" ");
+  return parameters.map(function(e) { return ((e.toString().indexOf(" ") !== -1) ? ":" : "") + e; }).join(" ");
 };
