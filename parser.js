@@ -38,7 +38,7 @@ Parser.prototype.write = function write(data) {
   return this.writable && !this.paused;
 };
 
-var RE_NICK = /^([a-z][a-z0-9\-\[\]\\`^\{\}]*)(?: |!|@)/i,
+var RE_NICK = /^([a-z][a-z0-9\-\[\]\\`^\{\}_]*)(?: |!|@)/i,
     RE_USER = /^([^ \r\n@]+)/,
     RE_SERVER = /^((?:[a-z][a-z0-9-]*\.)*(?:[a-z][a-z0-9-]*))/i,
     RE_COMMAND = /^(\d{3}|[A-Z]+)/;
