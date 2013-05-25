@@ -1,6 +1,6 @@
 {
   "name": "irc-protocol",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Streaming parser and serialiser for IRC protocol data",
   "main": "index.js",
   "engines": {
