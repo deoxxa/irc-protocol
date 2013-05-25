@@ -1,4 +1,4 @@
-IRC-Protocol
+IRC-Protocol [![build status](https://travis-ci.org/deoxxa/irc-protocol.png)](https://travis-ci.org/deoxxa/irc-protocol)
 ============
 
 Streaming parser and serialiser for IRC protocol data.

@@ -6,6 +6,9 @@
   "engines": {
     "node": "~0.10.0"
   },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/deoxxa/irc-protocol.git"
@@ -18,5 +21,8 @@
     "stream"
   ],
   "author": "Conrad Pankoff <deoxxa@fknsrs.biz> (http://www.fknsrs.biz/)",
-  "license": "BSD"
+  "license": "BSD",
+  "dependencies": {
+    "mocha": "~1.10.0"
+  }
 }
