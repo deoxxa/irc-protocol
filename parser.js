@@ -1,38 +1,42 @@
-var Steez = require("steez"),
-    util = require("util");
+var stream = require("stream");
 
-var Parser = module.exports = function Parser() {
-  Steez.call(this);
+var Parser = module.exports = function Parser(options) {
+  options = options || {};
+  options.objectMode = true;
+
+  stream.Transform.call(this, options);
 
   this.buffer = "";
 };
-util.inherits(Parser, Steez);
+Parser.prototype = Object.create(stream.Transform.prototype);
 
-Parser.prototype.write = function write(data) {
-  data = data.toString();
+Parser.prototype._transform = function _transform(input, encoding, done) {
+  input = input.toString();
 
-  this.buffer += data;
+  this.buffer += input;
 
   var parts = this.buffer.split(/\r\n/);
 
   this.buffer = parts.pop();
 
-  parts.forEach(function(part) {
+  var part;
+  for (var i=0;i<parts.length;++i) {
+    part = parts[i];
+
     if (part.length > 510) {
-      this.emit("error", new Error("line length is too long"));
-      return;
+      return done(Error("line length is too long"));
     }
 
     try {
       var message = this.parse(part);
-      this.emit("data", message);
+      this.push(message);
     } catch (e) {
-      this.emit("error", e);
+      return done(e);
     }
-  }.bind(this));
+  }
 
   if (this.buffer.length > 510) {
-    this.emit("error", new Error("line length is too long"));
+    return done(Error("line length is too long"));
   }
 
   return this.writable && !this.paused;

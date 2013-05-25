@@ -1,15 +1,17 @@
-var Steez = require("steez"),
-    util = require("util");
+var stream = require("stream");
 
-var Serialiser = module.exports = function Serialiser() {
-  Steez.call(this);
+var Serialiser = module.exports = function Serialiser(options) {
+  options = options || {};
+  options.objectMode = true;
+
+  stream.Transform.call(this, options);
 };
-util.inherits(Serialiser, Steez);
+Serialiser.prototype = Object.create(stream.Transform.prototype);
 
-Serialiser.prototype.write = function write(message) {
-  this.emit("data", this.format_message(message) + "\r\n");
+Serialiser.prototype._transform = function _transform(input, encoding, done) {
+  this.push(this.format_message(input) + "\r\n");
 
-  return this.writable && !this.paused;
+  return done();
 };
 
 Serialiser.prototype.format_message = function format_message(message) {

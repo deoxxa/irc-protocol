@@ -3,8 +3,8 @@
   "version": "0.1.1",
   "description": "Streaming parser and serialiser for IRC protocol data",
   "main": "index.js",
-  "dependencies": {
-    "steez": "~0.4.2"
+  "engines": {
+    "node": "~0.10.0"
   },
   "repository": {
     "type": "git",
