@@ -39,7 +39,7 @@ Parser.prototype._transform = function _transform(input, encoding, done) {
     return done(Error("line length is too long"));
   }
 
-  return this.writable && !this.paused;
+  return done();
 };
 
 var RE_NICK = /^([a-z][a-z0-9\-\[\]\\`^\{\}_]*)(?: |!|@)/i,
