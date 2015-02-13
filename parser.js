@@ -15,7 +15,7 @@ Parser.prototype._transform = function _transform(input, encoding, done) {
 
   this.buffer += input;
 
-  var parts = this.buffer.split(/\r\n/);
+  var parts = this.buffer.split(/[\r\n]+/);
 
   this.buffer = parts.pop();
 
